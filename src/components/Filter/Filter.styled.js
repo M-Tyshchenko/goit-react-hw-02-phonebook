@@ -17,4 +17,9 @@ export const FormField = styled.input`
   border-style: solid;
   font-size: 16px;
   font-weight: 400;
+
+  &:hover,
+  &:focus {
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  }
 `;
