@@ -4,7 +4,6 @@ import { Container, MainTitle, Title } from './App.styled';
 import { ContactList } from './ContactList/ContactList';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
-import toast, { Toaster } from 'react-hot-toast';
 
 export class App extends Component {
   state = {
