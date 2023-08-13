@@ -10,11 +10,19 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 16px;
 `;
 
+export const Marker = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000;
+`;
+
 export const DeleteBtn = styled.button`
+  margin-left: auto;
   padding: 4px 8px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   background-color: #fff;

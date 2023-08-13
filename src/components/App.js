@@ -3,6 +3,7 @@ import { GlobalStyles } from './GlobalStyle';
 import { Container, MainTitle, Title } from './App.styled';
 import { ContactList } from './ContactList/ContactList';
 import { ContactForm } from './ContactForm/ContactForm';
+import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -12,7 +13,7 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    name: '',
+    filter: '',
   };
 
   addContact = newContact => {
@@ -32,18 +33,24 @@ export class App extends Component {
     });
   };
 
+  changeFilterByName = name => {
+    this.setState({ filter: name });
+  };
+
   render() {
+    const { contacts, filter } = this.state;
+    const visibleContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
     return (
       <Container>
         <MainTitle>Phonebook</MainTitle>
         <ContactForm addContact={this.addContact} />
 
         <Title>Contacts</Title>
-
-        <ContactList
-          contacts={this.state.contacts}
-          onDelete={this.deleteContact}
-        />
+        <Filter filterByName={filter} onChangeName={this.changeFilterByName} />
+        <ContactList contacts={visibleContacts} onDelete={this.deleteContact} />
 
         <GlobalStyles />
       </Container>
