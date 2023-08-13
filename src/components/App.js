@@ -4,6 +4,7 @@ import { Container, MainTitle, Title } from './App.styled';
 import { ContactList } from './ContactList/ContactList';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
+import toast, { Toaster } from 'react-hot-toast';
 
 export class App extends Component {
   state = {
@@ -17,10 +18,12 @@ export class App extends Component {
   };
 
   addContact = newContact => {
-    this.setState(prevState => {
-      return { contacts: [...prevState.contacts, newContact] };
-    });
-    console.log(newContact);
+    this.state.contacts.find(contact => contact.name === newContact.name) ===
+    undefined
+      ? this.setState(prevState => {
+          return { contacts: [...prevState.contacts, newContact] };
+        })
+      : alert(`${newContact.name} is already in contacts`);
   };
 
   deleteContact = delContactId => {
