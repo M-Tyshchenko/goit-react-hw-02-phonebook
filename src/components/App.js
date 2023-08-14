@@ -17,7 +17,7 @@ export class App extends Component {
   };
 
   addContact = newContact => {
-    this.state.contacts.find(contact => contact.name === newContact.name) ===
+    this.state.contacts.find(contact => contact.name.toLowerCase() === newContact.name.toLowerCase()) ===
     undefined
       ? this.setState(prevState => {
           return { contacts: [...prevState.contacts, newContact] };
