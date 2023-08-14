@@ -18,13 +18,12 @@ export const ContactForm = ({ addContact }) => {
   return (
     <Formik
       initialValues={{
-        id: nanoid(10),
         name: '',
         number: '',
       }}
       validationSchema={schema}
       onSubmit={(values, actions) => {
-        addContact(values);
+        addContact({...values, id: nanoid()});
         actions.resetForm();
       }}
     >
